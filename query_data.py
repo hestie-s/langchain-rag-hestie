@@ -1,9 +1,12 @@
 import argparse
 from dataclasses import dataclass
 from langchain.vectorstores.chroma import Chroma
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CHROMA_PATH = "chroma"
 
@@ -41,7 +44,7 @@ def main():
     print(prompt)
 
     model = ChatOpenAI()
-    response_text = model.predict(prompt)
+    response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
