@@ -5,6 +5,9 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores.chroma import Chroma
 import os
 import shutil
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data/books"
@@ -16,8 +19,8 @@ def main():
 
 def generate_data_store():
     documents = load_documents()
-    chunks = split_text(documents)
-    save_to_chroma(chunks)
+    # chunks = split_text(documents)
+    # save_to_chroma(chunks)
 
 
 def load_documents():

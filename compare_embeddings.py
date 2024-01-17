@@ -1,6 +1,8 @@
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.evaluation import load_evaluator
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def main():
     # Get embedding for a word.
